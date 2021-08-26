@@ -1,12 +1,7 @@
 const expr= require('express');
 
-const monAppExpress = expr(); // création d'une application express
+const monAppExpress = expr();
 
-//monAppExpress.use((req, resp)=>{ //faire une requête/réponse (vers le serveur via) Express
-//    resp.json({"message": "Coucoule !"});
-//});
-
-//Ajout des midelwares
 monAppExpress.use((req, resp, next)=>{
     console.log("Requête reçue");
     next();
@@ -22,7 +17,5 @@ monAppExpress.use((req, resp, next)=>{
 monAppExpress.use((req, resp, next)=>{
     console.log("Réponse envoyée avec succès !");
 });
-
-
 
 module.exports = monAppExpress;
