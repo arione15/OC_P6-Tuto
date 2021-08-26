@@ -46,17 +46,9 @@ monAppExpress.post('/api/stuff', (req, res, next) => {
 // ***************************************************** //
 // *************** La route GET *********************** //
 monAppExpress.get('/api/stuff', (req, res, next) => {
-  Thing.find()
+  Things.find()
     .then((mesObjets)=>res.status(200).json(mesObjets))
     .catch(error=>res.status(400).json({error}));
-});
-
-// ***************************************************** //
-// *************** La route GET d'un seul objet *********************** //
-monAppExpress.get('/api/stuff/:id', (req, res, next) => {
-  Thing.findOne({"_id": req.params.id})
-    .then((monObjet)=>res.status(200).json(monObjet))
-    .catch(error=>res.status(404).json({error}));
 });
 
 module.exports = monAppExpress;

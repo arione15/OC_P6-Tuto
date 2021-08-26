@@ -24,7 +24,7 @@ monAppExpress.use((req, res, next) => {
 monAppExpress.use(bodyParser.json());
 
 // ***************************************************** //
-// *************** La route POST *********************** //
+// *************** La route post *********************** //
 monAppExpress.post('/api/stuff', (req, res, next) => {
   //console.log(req.body);
   //res.status(201).json({"message": "L'objet a été reçu !!"});
@@ -43,20 +43,11 @@ monAppExpress.post('/api/stuff', (req, res, next) => {
     }));
 });
 
-// ***************************************************** //
-// *************** La route GET *********************** //
+// La route get
 monAppExpress.get('/api/stuff', (req, res, next) => {
   Thing.find()
     .then((mesObjets)=>res.status(200).json(mesObjets))
     .catch(error=>res.status(400).json({error}));
-});
-
-// ***************************************************** //
-// *************** La route GET d'un seul objet *********************** //
-monAppExpress.get('/api/stuff/:id', (req, res, next) => {
-  Thing.findOne({"_id": req.params.id})
-    .then((monObjet)=>res.status(200).json(monObjet))
-    .catch(error=>res.status(404).json({error}));
 });
 
 module.exports = monAppExpress;

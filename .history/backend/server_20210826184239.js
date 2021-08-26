@@ -1,5 +1,5 @@
 const monHttp = require('http');
-const monAppExpress = require('./app');
+const monAppExpress = require('./app.js');
 
 const normalizePort = val => {
   const port = parseInt(val, 10);

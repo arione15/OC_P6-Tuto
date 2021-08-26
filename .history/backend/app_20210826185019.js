@@ -1,7 +1,7 @@
 const expr = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Thing = require('./models/Thing.js');
+const Thing = require('./models/Thing');
 
 const monAppExpress = expr();
 
@@ -23,8 +23,7 @@ monAppExpress.use((req, res, next) => {
 // middleware pour transformer le corps de la requête en un format utilisable
 monAppExpress.use(bodyParser.json());
 
-// ***************************************************** //
-// *************** La route POST *********************** //
+// *************** La route post ***********************
 monAppExpress.post('/api/stuff', (req, res, next) => {
   //console.log(req.body);
   //res.status(201).json({"message": "L'objet a été reçu !!"});
@@ -43,20 +42,26 @@ monAppExpress.post('/api/stuff', (req, res, next) => {
     }));
 });
 
-// ***************************************************** //
-// *************** La route GET *********************** //
+// La route get
 monAppExpress.get('/api/stuff', (req, res, next) => {
-  Thing.find()
-    .then((mesObjets)=>res.status(200).json(mesObjets))
-    .catch(error=>res.status(400).json({error}));
-});
-
-// ***************************************************** //
-// *************** La route GET d'un seul objet *********************** //
-monAppExpress.get('/api/stuff/:id', (req, res, next) => {
-  Thing.findOne({"_id": req.params.id})
-    .then((monObjet)=>res.status(200).json(monObjet))
-    .catch(error=>res.status(404).json({error}));
+  const stuff = [{
+      _id: 'oeihfzeoi',
+      title: 'Mon premier objet',
+      description: 'Les infos de mon premier objet',
+      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
+      price: 4900,
+      userId: 'qsomihvqios',
+    },
+    {
+      _id: 'oeihfzeomoihi',
+      title: 'Mon deuxième objet',
+      description: 'Les infos de mon deuxième objet',
+      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
+      price: 2900,
+      userId: 'qsomihvqios',
+    },
+  ];
+  res.status(200).json(stuff);
 });
 
 module.exports = monAppExpress;
