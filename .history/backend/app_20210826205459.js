@@ -24,7 +24,7 @@ monAppExpress.use((req, res, next) => {
 monAppExpress.use(bodyParser.json());
 
 // ***************************************************** //
-// *************** Enregistrer un objet **************** //
+// *************** La route POST *********************** //
 monAppExpress.post('/api/stuff', (req, res, next) => {
   //console.log(req.body);
   //res.status(201).json({"message": "L'objet a été reçu !!"});
@@ -44,7 +44,7 @@ monAppExpress.post('/api/stuff', (req, res, next) => {
 });
 
 // ***************************************************** //
-// ************* Récupérer tous les objets ************ //
+// *************** La route GET *********************** //
 monAppExpress.get('/api/stuff', (req, res, next) => {
   Thing.find()
     .then((mesObjets)=>res.status(200).json(mesObjets))
@@ -52,7 +52,7 @@ monAppExpress.get('/api/stuff', (req, res, next) => {
 });
 
 // ***************************************************** //
-// *************** Récupérer un seul objet ************ //
+// *************** La route GET d'un seul objet *********************** //
 monAppExpress.get('/api/stuff/:id', (req, res, next) => {
   Thing.findOne({"_id": req.params.id})
     .then((monObjet)=>res.status(200).json(monObjet))
@@ -60,23 +60,11 @@ monAppExpress.get('/api/stuff/:id', (req, res, next) => {
 });
 
 // ***************************************************** //
-// *************** Modifier un objet ******************* //
-monAppExpress.put('/api/stuff/:id', (req, res, next) => {
-  Thing.updateOne({ "_id": req.params.id }, { ...req.body, "_id": req.params.id })
-    .then(()=>{
-      res.status(200).json({"message": "Objet modifié !"});
-    })
+// *************** La route GET d'un seul objet *********************** //
+monAppExpress.get('/api/stuff/:id', (req, res, next) => {
+  Thing.findOne({"_id": req.params.id})
+    .then((monObjet)=>res.status(200).json(monObjet))
     .catch(error=>res.status(404).json({error}));
-});
-
-// ***************************************************** //
-// *************** Supprimer un objet ***************** //
-monAppExpress.delete('/api/stuff/:id', (req, res, next) => {
-  Thing.deleteOne({ "_id": req.params.id })
-    .then(()=>{
-      res.status(200).json({"message": "Objet supprimé !"});
-    })
-    .catch(error=>res.status(400).json({error}));
 });
 
 module.exports = monAppExpress;

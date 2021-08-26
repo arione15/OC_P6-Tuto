@@ -64,19 +64,9 @@ monAppExpress.get('/api/stuff/:id', (req, res, next) => {
 monAppExpress.put('/api/stuff/:id', (req, res, next) => {
   Thing.updateOne({ "_id": req.params.id }, { ...req.body, "_id": req.params.id })
     .then(()=>{
-      res.status(200).json({"message": "Objet modifié !"});
+      res.status(200).json();
     })
     .catch(error=>res.status(404).json({error}));
-});
-
-// ***************************************************** //
-// *************** Supprimer un objet ***************** //
-monAppExpress.delete('/api/stuff/:id', (req, res, next) => {
-  Thing.deleteOne({ "_id": req.params.id })
-    .then(()=>{
-      res.status(200).json({"message": "Objet supprimé !"});
-    })
-    .catch(error=>res.status(400).json({error}));
 });
 
 module.exports = monAppExpress;

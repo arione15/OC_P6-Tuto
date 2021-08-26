@@ -72,7 +72,7 @@ monAppExpress.put('/api/stuff/:id', (req, res, next) => {
 // ***************************************************** //
 // *************** Supprimer un objet ***************** //
 monAppExpress.delete('/api/stuff/:id', (req, res, next) => {
-  Thing.deleteOne({ "_id": req.params.id })
+  Thing.deletOne({ "_id": req.params.id })
     .then(()=>{
       res.status(200).json({"message": "Objet supprimé !"});
     })
