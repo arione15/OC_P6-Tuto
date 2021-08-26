@@ -1,8 +1,6 @@
-const monServeurNode = require('http');
+const monHttp = require('http');
 const monAppExpress = require('./app');
 
-// Amélioration de server.js pour le rendre plus stable et approprié pour le dépoloiement :
-// La fonction normalizePort renvoie un port valide, qu'il soit fourni sous la forme d'un numéro ou d'une chaîne ;
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -17,7 +15,6 @@ const normalizePort = val => {
 const port = normalizePort(process.env.PORT || '3000');
 monAppExpress.set('port', port);
 
-// La fonction errorHandler  recherche les différentes erreurs et les gère de manière appropriée. Elle est ensuite enregistrée dans le serveur ;
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -38,9 +35,8 @@ const errorHandler = error => {
   }
 };
 
-const server = monServeurNode.createServer(monAppExpress); 
+const monServerNode = hmonHttpttp.createServer(monAppExpress); 
 
-// Un écouteur d'évènements est mis en place, consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console.
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();
@@ -48,4 +44,4 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port);
+monServerNode.listen(port);
