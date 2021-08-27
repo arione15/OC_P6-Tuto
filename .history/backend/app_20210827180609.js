@@ -26,6 +26,6 @@ monAppExpress.use((req, res, next) => {
 // middleware pour transformer le corps de la requête en un format utilisable
 monAppExpress.use(bodyParser.json());
 
-monAppExpress.use('/api/stuff/', stuffRouteur);
+monAppExpress.use()
 
 module.exports = monAppExpress;
