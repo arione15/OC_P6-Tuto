@@ -3,9 +3,9 @@ const routeur = express.Router();
 const controleurStuff = require('../controleurs/stuff.js')
 
 routeur.post('/', controleurStuff.createThing);
-routeur.get('/', controleurStuff.getAllThing);
-routeur.get('/:id', controleurStuff.getOneThing);
-routeur.put('/:id', controleurStuff.modifyThing);
-routeur.delete('/:id', controleurStuff.deleteThing);
+routeur.get('/', getAllThing);
+routeur.get('/:id', getOneThing);
+routeur.put('/:id', modifyThing);
+routeur.delete('/:id', deleteThing);
 
 module.exports = routeur;
