@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const stuffRouteur = require('./routes/stuff');
-const userRouteur = require('./routes/user.js')
 
 const monAppExpress = expr();
 
@@ -28,7 +27,5 @@ monAppExpress.use((req, res, next) => {
 monAppExpress.use(bodyParser.json());
 
 monAppExpress.use('/api/stuff/', stuffRouteur);
-
-monAppExpress.use('/api/auth/', userRouteur);
 
 module.exports = monAppExpress;

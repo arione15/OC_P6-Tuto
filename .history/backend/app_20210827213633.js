@@ -29,6 +29,6 @@ monAppExpress.use(bodyParser.json());
 
 monAppExpress.use('/api/stuff/', stuffRouteur);
 
-monAppExpress.use('/api/auth/', userRouteur);
+mon1
 
 module.exports = monAppExpress;
