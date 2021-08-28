@@ -9,20 +9,18 @@ exports.signup = (req, res, next) => {
                 email: req.body.email,
                 password: monHash
             });
-            user.save()
-                .then(() => {
-                    res.status(201).json({
-                        message: "Utilisateur ajouté !"
-                    })
-                })
-                .catch(error => res.status(400).json({
-                    error
-                }));
+            user.save();
+        
+        .then(() => {
+            res.status(201).json({
+                message: "Utilisateur ajouté !"
+            })
         })
         .catch(error => res.status(400).json({
             error
         }));
 };
+
 exports.login = (req, res, next) => {
     User.findOne({
             email: req.body.email

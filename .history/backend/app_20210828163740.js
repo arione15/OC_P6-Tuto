@@ -2,7 +2,7 @@ const expr = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/stuff');
+const stuffRoute = require('./routes/stuff');
 const userRoutes = require('./routes/user')
 
 const monAppExpress = expr();
@@ -27,7 +27,7 @@ monAppExpress.use((req, res, next) => {
 // middleware pour transformer le corps de la requête en un format utilisable
 monAppExpress.use(bodyParser.json());
 
-monAppExpress.use('/api/stuff', stuffRoutes);
+monAppExpress.use('/api/stuff', stuffRouteur);
 
 monAppExpress.use('/api/auth', userRoutes);
 
