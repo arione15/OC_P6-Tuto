@@ -34,8 +34,7 @@ exports.login = (req, res, next) => {
                     return res.status(401).json({error: 'Le mot de passe n\'est pas correct !'})
                 }
                 res.status(200).json({
-                    userId: user._id,
-                    token: 'TOKENTEST'
+                    userId:
                 })
             })
             .catch(error => res.status(500).json({error}))

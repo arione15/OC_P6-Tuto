@@ -27,18 +27,8 @@ exports.login = (req, res, next) => {
             if(!user){
                 return res.status(401).json({error: 'Utilisateur non trouvé !'});
             }
-            // s'il y a un user dont le email correspond alors on procède à la comparaison des hashs des mdp
-            bcrypt.compare(req.body.password, user.password)
-            .then(valid => {
-                if(!valid){
-                    return res.status(401).json({error: 'Le mot de passe n\'est pas correct !'})
-                }
-                res.status(200).json({
-                    userId: user._id,
-                    token: 'TOKENTEST'
-                })
-            })
-            .catch(error => res.status(500).json({error}))
+            // s'il y a 
+
         })
         .catch(error => {
             res.status(500).json({error})
