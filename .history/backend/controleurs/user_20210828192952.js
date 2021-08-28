@@ -4,24 +4,25 @@ const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
-        .then(hash => {
+        .then(monHash => {
             const user = new User({
                 email: req.body.email,
-                password: hash
+                password: monHash
             });
             user.save()
-                .then(() => res.status(201).json({
-                    message: 'Utilisateur créé !'
-                }))
+                .then(() => {
+                    res.status(201).json({
+                        message: "Utilisateur ajouté !"
+                    })
+                })
                 .catch(error => res.status(400).json({
                     error
                 }));
         })
-        .catch(error => res.status(500).json({
+        .catch(error => res.status(400).json({
             error
         }));
 };
-
 exports.login = (req, res, next) => {
     User.findOne({
             email: req.body.email

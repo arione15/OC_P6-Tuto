@@ -22,6 +22,19 @@ exports.signup = (req, res, next) => {
         }));
 };
 
+            .catch(error => res.status(400).json({
+                error
+            }));
+
+
+
+
+
+
+
+
+
+
 exports.login = (req, res, next) => {
     User.findOne({
             email: req.body.email
