@@ -60,25 +60,19 @@ exports.modifyThing = (req, res, next) => {
 }
 
 exports.deleteThing = (req, res, next) => {
-    // On cherche l'objet dans la BDD pour avoir son url
-    Thing.findOne({
-            _id: req.params.id
-        })
-        .then(thing => {
-            const filename = thing.imageUrl.split('/images')[1];
-            fs.unlink(`images/${filename}`, () => {
-                Thing.deleteOne({
-                        "_id": req.params.id
-                    })
-                    .then(() => res.status(200).json({
-                        message: 'Objet supprimé !'
-                    }))
-                    .catch(error => res.status(400).json({
-                        error
-                    }));
-            });
-        })
-        .catch(error => res.status(500).json({
-            error
-        }));
-};
+        // On cherche l'objet dans la BDD pour avoir son url
+        Thing.findOne({
+                _id: req.params.id
+            })
+            .then(thing => {
+                const filename = thing.imageUrl.split('/images')[1];
+                fs.unlink(`images/${filename}`, () => {
+                    Thing.deleteOne({
+                            "_id": req.params.id
+                        })
+                        .then(() => res.status(200).json({message: 'Objet supprimé !'}))
+                        .catch(error => res.status(400).json({error}));
+                });
+            })
+            .catch(error => res.status(500).json({error}));
+            
