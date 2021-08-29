@@ -35,16 +35,14 @@ exports.getOneThing = (req, res, next) => {
 }
 
 exports.modifyThing = (req, res, next) => {
-    const thingObject = req.file ? {
-        ...JSON.parse(req.body.thing),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : {...req.body};
+    const thingObject = req.file ? {} : {... req};
+
 
     Thing.updateOne({
-            _id: req.params.id
+            "_id": req.params.id
         }, {
-            ...thingObject,
-            _id: req.params.id
+            ...req.body,
+            "_id": req.params.id
         })
         .then(() => {
             res.status(200).json({
