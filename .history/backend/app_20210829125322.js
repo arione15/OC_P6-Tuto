@@ -28,7 +28,7 @@ monAppExpress.use((req, res, next) => {
 // middleware pour transformer le corps de la requête en un format utilisable
 monAppExpress.use(bodyParser.json());
 
-monAppExpress.use('/images', expr.static(path.join(__dirname, 'images')));
+monAppExpress.use('/imagesapi/stuff', stuffRoutes);
 
 monAppExpress.use('/api/stuff', stuffRoutes);
 

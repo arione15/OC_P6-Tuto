@@ -6,8 +6,8 @@ exports.createThing = (req, res, next) => {
     const thing = new Thing({
         ...thingObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    });
-    thing.save()
+      });
+      thing.save()
         .then(() => res.status(201).json({
             message: 'Objet enregistré !'
         }))

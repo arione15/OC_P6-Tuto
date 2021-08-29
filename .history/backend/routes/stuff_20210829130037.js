@@ -9,6 +9,6 @@ routeur.post('/', auth, multer, controleurStuff.createThing);
 routeur.get('/', auth, controleurStuff.getAllThing);
 routeur.get('/:id', auth, controleurStuff.getOneThing);
 routeur.put('/:id', auth, controleurStuff.modifyThing);
-routeur.delete('/:id', auth, controleurStuff.deleteThing);
+routeur.delete('/:id', auth, multer, controleurStuff.deleteThing);
 
 module.exports = routeur;
